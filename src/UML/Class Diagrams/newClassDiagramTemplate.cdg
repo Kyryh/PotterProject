@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="newClassDiagramTemplate">
+  <ClassDiagramComponents>
+    <Class name="Tile" package="" visibility="public" xPosition="528.0" yPosition="54.0">
+      <Fields>
+        <Field name="check" type="boolean" visibility="private"/>
+        <Field name="wall" type="boolean" visibility="private"/>
+        <Field name="startDistance" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Maze" package="" visibility="public" xPosition="287.0" yPosition="54.0">
+      <Fields>
+        <Field name="matrice" type="Tile[][]" visibility="private"/>
+        <Field name="height" type="int" visibility="private"/>
+        <Field name="lenght" type="int" visibility="private"/>
+        <Field name="xPos" type="int" visibility="private"/>
+        <Field name="yPos" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="findCup" returnType="boolean" visibility="public"/>
+        <Method name="home" returnType="boolean" visibility="public"/>
+        <Method name="move" returnType="int" visibility="public">
+          <Argument type="int" name="dir"/>
+        </Method>
+        <Method name="untitledMethod" returnType="void" visibility="public"/>
+        <Method name="rest" returnType="string" visibility="public">
+          <Argument type="string" name="s"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Rest" package="" visibility="public" xPosition="66.0" yPosition="54.0">
+      <Fields>
+        <Field name="s" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="untitledMethod" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>
