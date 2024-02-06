@@ -2,16 +2,20 @@
 
 <ClassDiagram name="newClassDiagramTemplate">
   <ClassDiagramComponents>
-    <Class name="Tile" package="" visibility="public" xPosition="528.0" yPosition="54.0">
+    <Class name="Tile" package="" visibility="public" xPosition="474.0" yPosition="54.0">
       <Fields>
-        <Field name="check" type="boolean" visibility="private"/>
+        <Field name="checked" type="boolean" visibility="private"/>
         <Field name="wall" type="boolean" visibility="private"/>
         <Field name="startDistance" type="int" visibility="private"/>
       </Fields>
       <Constructors/>
-      <Methods/>
+      <Methods>
+        <Method name="getChecked" returnType="boolean" visibility="public"/>
+        <Method name="getWall" returnType="boolean" visibility="public"/>
+        <Method name="getStartDistace" returnType="int" visibility="public"/>
+      </Methods>
     </Class>
-    <Class name="Maze" package="" visibility="public" xPosition="287.0" yPosition="54.0">
+    <Class name="Maze" package="" visibility="public" xPosition="246.0" yPosition="54.0">
       <Fields>
         <Field name="matrice" type="Tile[][]" visibility="private"/>
         <Field name="height" type="int" visibility="private"/>
@@ -26,19 +30,100 @@
         <Method name="move" returnType="int" visibility="public">
           <Argument type="int" name="dir"/>
         </Method>
-        <Method name="untitledMethod" returnType="void" visibility="public"/>
-        <Method name="rest" returnType="string" visibility="public">
-          <Argument type="string" name="s"/>
-        </Method>
+        <Method name="comeHome" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Rest" package="" visibility="public" xPosition="66.0" yPosition="54.0">
+    <Class name="Rest" package="" visibility="public" xPosition="24.0" yPosition="54.0">
       <Fields>
-        <Field name="s" type="String" visibility="private"/>
+        <Field name="seed" type="String" visibility="private"/>
+        <Field name="team" type="String" visibility="private"/>
       </Fields>
       <Constructors/>
       <Methods>
-        <Method name="untitledMethod" returnType="void" visibility="public"/>
+        <Method name="init" returnType="Init" visibility="public"/>
+        <Method name="look" returnType="Look" visibility="public"/>
+        <Method name="move" returnType="Move" visibility="public">
+          <Argument type="int" name="were"/>
+        </Method>
+        <Method name="unload" returnType="Unload" visibility="public"/>
+        <Method name="load" returnType="Load" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Init" package="" visibility="public" xPosition="24.0" yPosition="380.0">
+      <Fields>
+        <Field name="width" type="int" visibility="private"/>
+        <Field name="height" type="int" visibility="private"/>
+        <Field name="posX" type="int" visibility="private"/>
+        <Field name="posY" type="int" visibility="private"/>
+        <Field name="energy" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="Init" returnType="String" visibility="public">
+          <Argument type="String" name="s"/>
+        </Method>
+        <Method name="getWidth" returnType="int" visibility="public"/>
+        <Method name="getHeigh" returnType="int" visibility="public"/>
+        <Method name="getPosX" returnType="int" visibility="public"/>
+        <Method name="getPosY" returnType="int" visibility="public"/>
+        <Method name="getEnergy" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Look" package="" visibility="public" xPosition="182.0" yPosition="380.0">
+      <Fields>
+        <Field name="neighbors" type="int[]" visibility="private"/>
+        <Field name="posX" type="int" visibility="private"/>
+        <Field name="posY" type="Int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="Look" returnType="String" visibility="public">
+          <Argument type="String" name="s"/>
+        </Method>
+        <Method name="getNeighbors" returnType="int[]" visibility="public"/>
+        <Method name="getPosX" returnType="int" visibility="public"/>
+        <Method name="getPosY" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Load" package="" visibility="public" xPosition="657.0" yPosition="380.0">
+      <Fields>
+        <Field name="inventory" type="String" visibility="private"/>
+        <Field name="energy" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="Load" returnType="String" visibility="public">
+          <Argument type="String" name="s"/>
+        </Method>
+        <Method name="getEnergy" returnType="int" visibility="public"/>
+        <Method name="getInventory" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Unload" package="" visibility="public" xPosition="498.0" yPosition="380.0">
+      <Fields>
+        <Field name="staus" type="String" visibility="private"/>
+        <Field name="energy" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="Unload" returnType="String" visibility="public">
+          <Argument type="String" name="s"/>
+        </Method>
+        <Method name="getStatus" returnType="String" visibility="public"/>
+        <Method name="getEnergy" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Move " package="" visibility="public" xPosition="340.0" yPosition="380.0">
+      <Fields>
+        <Field name="energy" type="int" visibility="private"/>
+        <Field name="posX" type="int" visibility="private"/>
+        <Field name="posY" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getEnergy" returnType="int" visibility="public"/>
+        <Method name="getPosX" returnType="int" visibility="public"/>
+        <Method name="getPosy" returnType="int" visibility="public"/>
       </Methods>
     </Class>
   </ClassDiagramComponents>
