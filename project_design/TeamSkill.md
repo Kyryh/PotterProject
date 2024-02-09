@@ -8,5 +8,9 @@
 3. Shehab Adam(developer): 
 - english knowledge 
 - teamwork skills
-4. Molinari Simone(developer): advanced english skills and good programming skills
-Beneventi Tommaso(developer): teamwork skills and all-around skills.
+4. Molinari Simone(developer): 
+- advanced english skills 
+- good programming skills
+5. Beneventi Tommaso(developer): 
+- teamwork skills 
+- all-around skills
