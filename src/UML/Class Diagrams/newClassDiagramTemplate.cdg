@@ -2,7 +2,7 @@
 
 <ClassDiagram name="newClassDiagramTemplate">
   <ClassDiagramComponents>
-    <Class name="Tile" package="" visibility="public" xPosition="474.0" yPosition="54.0">
+    <Class name="Tile" package="" visibility="public" xPosition="834.0" yPosition="50.0">
       <Fields>
         <Field name="checked" type="boolean" visibility="private"/>
         <Field name="wall" type="boolean" visibility="private"/>
@@ -15,9 +15,9 @@
         <Method name="getStartDistace" returnType="int" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Maze" package="" visibility="public" xPosition="246.0" yPosition="54.0">
+    <Class name="Maze" package="" visibility="public" xPosition="1052.0" yPosition="21.0">
       <Fields>
-        <Field name="matrice" type="Tile[][]" visibility="private"/>
+        <Field name="matrix" type="Tile[][]" visibility="private"/>
         <Field name="height" type="int" visibility="private"/>
         <Field name="lenght" type="int" visibility="private"/>
         <Field name="xPos" type="int" visibility="private"/>
@@ -33,23 +33,23 @@
         <Method name="comeHome" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Rest" package="" visibility="public" xPosition="24.0" yPosition="54.0">
+    <Class name="Rest" package="" visibility="public" xPosition="893.0" yPosition="363.0">
       <Fields>
         <Field name="seed" type="String" visibility="private"/>
         <Field name="team" type="String" visibility="private"/>
       </Fields>
       <Constructors/>
       <Methods>
-        <Method name="init" returnType="Init" visibility="public"/>
-        <Method name="look" returnType="Look" visibility="public"/>
-        <Method name="move" returnType="Move" visibility="public">
-          <Argument type="int" name="were"/>
+        <Method name="init" returnType="InitResult" visibility="public"/>
+        <Method name="look" returnType="LookResult" visibility="public"/>
+        <Method name="Move" returnType="int" visibility="public">
+          <Argument type="int" name="move"/>
         </Method>
-        <Method name="unload" returnType="Unload" visibility="public"/>
-        <Method name="load" returnType="Load" visibility="public"/>
+        <Method name="unload" returnType="UnloadResult" visibility="public"/>
+        <Method name="load" returnType="LoadResult" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Init" package="" visibility="public" xPosition="24.0" yPosition="380.0">
+    <Class name="InitResult" package="" visibility="public" xPosition="544.0" yPosition="17.0">
       <Fields>
         <Field name="width" type="int" visibility="private"/>
         <Field name="height" type="int" visibility="private"/>
@@ -57,75 +57,106 @@
         <Field name="posY" type="int" visibility="private"/>
         <Field name="energy" type="int" visibility="private"/>
       </Fields>
-      <Constructors/>
-      <Methods>
-        <Method name="Init" returnType="String" visibility="public">
-          <Argument type="String" name="s"/>
-        </Method>
-        <Method name="getWidth" returnType="int" visibility="public"/>
-        <Method name="getHeigh" returnType="int" visibility="public"/>
-        <Method name="getPosX" returnType="int" visibility="public"/>
-        <Method name="getPosY" returnType="int" visibility="public"/>
-        <Method name="getEnergy" returnType="int" visibility="public"/>
-      </Methods>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="JSON" name="result"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
     </Class>
-    <Class name="Look" package="" visibility="public" xPosition="182.0" yPosition="380.0">
+    <Class name="LookResult" package="" visibility="public" xPosition="532.0" yPosition="986.0">
       <Fields>
         <Field name="neighbors" type="int[]" visibility="private"/>
         <Field name="posX" type="int" visibility="private"/>
         <Field name="posY" type="Int" visibility="private"/>
       </Fields>
-      <Constructors/>
-      <Methods>
-        <Method name="Look" returnType="String" visibility="public">
-          <Argument type="String" name="s"/>
-        </Method>
-        <Method name="getNeighbors" returnType="int[]" visibility="public"/>
-        <Method name="getPosX" returnType="int" visibility="public"/>
-        <Method name="getPosY" returnType="int" visibility="public"/>
-      </Methods>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="JSON" name="result"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
     </Class>
-    <Class name="Load" package="" visibility="public" xPosition="657.0" yPosition="380.0">
+    <Class name="LoadResult" package="" visibility="public" xPosition="511.0" yPosition="270.0">
       <Fields>
         <Field name="inventory" type="String" visibility="private"/>
         <Field name="energy" type="int" visibility="private"/>
       </Fields>
-      <Constructors/>
-      <Methods>
-        <Method name="Load" returnType="String" visibility="public">
-          <Argument type="String" name="s"/>
-        </Method>
-        <Method name="getEnergy" returnType="int" visibility="public"/>
-        <Method name="getInventory" returnType="String" visibility="public"/>
-      </Methods>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="JSON" name="result"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
     </Class>
-    <Class name="Unload" package="" visibility="public" xPosition="498.0" yPosition="380.0">
+    <Class name="UnloadResult" package="" visibility="public" xPosition="532.0" yPosition="522.0">
       <Fields>
-        <Field name="staus" type="String" visibility="private"/>
+        <Field name="status" type="String" visibility="private"/>
         <Field name="energy" type="int" visibility="private"/>
       </Fields>
-      <Constructors/>
-      <Methods>
-        <Method name="Unload" returnType="String" visibility="public">
-          <Argument type="String" name="s"/>
-        </Method>
-        <Method name="getStatus" returnType="String" visibility="public"/>
-        <Method name="getEnergy" returnType="int" visibility="public"/>
-      </Methods>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="JSON" name="result"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
     </Class>
-    <Class name="Move " package="" visibility="public" xPosition="340.0" yPosition="380.0">
+    <Class name="MoveResult" package="" visibility="public" xPosition="538.0" yPosition="740.0">
       <Fields>
         <Field name="energy" type="int" visibility="private"/>
         <Field name="posX" type="int" visibility="private"/>
         <Field name="posY" type="int" visibility="private"/>
       </Fields>
-      <Constructors/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="JSON" name="result"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="JSON" package="" visibility="public" xPosition="68.0" yPosition="382.0">
+      <Fields>
+        <Field name="jsonString" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="jsonString"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="ArrayList&lt;JSONPair&gt;" name="params"/>
+        </Constructor>
+      </Constructors>
       <Methods>
-        <Method name="getEnergy" returnType="int" visibility="public"/>
-        <Method name="getPosX" returnType="int" visibility="public"/>
-        <Method name="getPosy" returnType="int" visibility="public"/>
+        <Method name="getParam" returnType="String" visibility="public">
+          <Argument type="String" name="param"/>
+        </Method>
+        <Method name="getArray" returnType="String" visibility="public">
+          <Argument type="String" name="param"/>
+        </Method>
       </Methods>
     </Class>
+    <Class name="JSONPair" package="" visibility="public" xPosition="84.0" yPosition="149.0">
+      <Fields>
+        <Field name="param" type="String" visibility="private"/>
+        <Field name="value" type="object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
   </ClassDiagramComponents>
-  <ClassDiagramRelations/>
+  <ClassDiagramRelations>
+    <UseRelation name="" source="LoadResult" target="JSON" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="matrix" source="Maze" target="Tile" type="Composition" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+    <UseRelation name="" source="Rest" target="MoveResult" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="LookResult" target="JSON" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="Maze" target="Rest" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="Rest" target="UnloadResult" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="JSON" target="JSONPair" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="UnloadResult" target="JSON" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="InitResult" target="JSON" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="Rest" target="InitResult" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="Rest" target="LookResult" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="Rest" target="LoadResult" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="MoveResult" target="JSON" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
 </ClassDiagram>
