@@ -41,4 +41,10 @@ public int getEnergy() {
         posY = json.getInt("posy");
         energy = json.getInt("Energy");
     }
+
+    @Override
+    public String toString() {
+        return "InitResult{" + "width=" + width + ", height=" + height + ", posX=" + posX + ", posY=" + posY + ", energy=" + energy + '}';
+    }
+    
 }
