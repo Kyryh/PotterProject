@@ -35,14 +35,27 @@ public class Maze {
     public void lookNear(){
         LookNear look= new LookNear(rest.look());
         ArrayList<Int> neighbors = look.getNeighbors();
-        if (look.getPosY()>0)
+        //up
+        if (look.getPosY()>0){
             matrix[look.getPosX()][look.getPosY()-1].setCheck(true);
-        if (look.getPosX()<lenght-1)
+            matrix[look.getPosX()][look.getPosY()-1].setType(neighbors[0]);
+        }
+        //right
+        if (look.getPosX()<lenght-1){
             matrix[look.getPosX()+1][look.getPosY()].setCheck(true);
-        if (look.getPosY()<height-1)
+            matrix[look.getPosX()+1][look.getPosY()].setType(neighbors[2]);
+        }
+        //down
+        if (look.getPosY()<height-1){
             matrix[look.getPosX()][look.getPosY()+1].setCheck(true);
-        if (look.getPosX()>0)
+            matrix[look.getPosX()][look.getPosY()+1].setType(neighbors[4]);
+        }
+        //left
+        if (look.getPosX()>0){
             matrix[look.getPosX()-1][look.getPosY()].setCheck(true);
+            matrix[look.getPosX()-1][look.getPosY()].setType(neighbors[6]);
+        }
+
     }
 
     public boolean home() {
