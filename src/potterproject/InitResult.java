@@ -47,4 +47,6 @@ public int getEnergy() {
         return "InitResult{" + "width=" + width + ", height=" + height + ", posX=" + posX + ", posY=" + posY + ", energy=" + energy + '}';
     }
     
+    // maze size
+    // ratio 1.25 -> 1.5
 }
