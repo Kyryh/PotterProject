@@ -1,6 +1,7 @@
 package potterproject;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,15 +11,15 @@ public class JSON {
     
     final Pattern pattern = Pattern.compile(regex, Pattern.DOTALL);
     
-    private ArrayList<JSONPair> params;
+    private final ArrayList<JSONPair> params;
 
     public JSON(String jsonString) {
-        params = new ArrayList<JSONPair>();
+        params = new ArrayList<>();
         Matcher matcher = pattern.matcher(jsonString);
         while (matcher.find()) {
             params.add(new JSONPair(
-                matcher.group(1),
-                matcher.group(2)
+                matcher.group(1).trim(),
+                matcher.group(2).trim()
             ));
         }
     }
@@ -48,17 +49,31 @@ public class JSON {
         return getValue(param).split("\\s*[,|\\[|\\]]\\s*");
     }
     
-    public int[] getIntArray(String param) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public ArrayList<Integer> getIntArray(String param) {
+        ArrayList<Integer> intArray = new ArrayList<>();
+        for (String value : getArray(param)) {
+            if (!value.isBlank())
+                intArray.add(Integer.valueOf(value));
+        }
+        return intArray;
     }
     
-    public String[] getStringArray(String param) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public ArrayList<String> getStringArray(String param) {
+        ArrayList<String> stringArray = new ArrayList<>();
+        for (String value : getArray(param)) {
+            if (!value.isBlank())
+                stringArray.add(value.substring(1, value.length()-1));
+        }
+        return stringArray;
     }
 
     @Override
     public String toString() {
-        return "JSON" + params;
+        String jsonString = "{";
+        for (JSONPair pair : params) {
+            jsonString += "\"%s\":%s,".formatted(pair.getParam(), pair.getValue());
+        }
+        return jsonString.substring(0, jsonString.length()-1) + "}";
     }
     
     
