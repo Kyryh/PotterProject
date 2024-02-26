@@ -1,7 +1,6 @@
 package potterproject;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,7 +18,8 @@ public class JSON {
         while (matcher.find()) {
             params.add(new JSONPair(
                 matcher.group(1).trim(),
-                matcher.group(2).trim()
+                matcher.group(2).trim(),
+                false
             ));
         }
     }
