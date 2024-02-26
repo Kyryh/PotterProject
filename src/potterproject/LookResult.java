@@ -2,7 +2,7 @@ package potterproject;
 
 public class LookResult {
 
-    private int[] neighbors;
+    private ArrayList<Integer> neighbors;
 
     private int posX;
 
