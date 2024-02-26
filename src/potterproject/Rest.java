@@ -1,10 +1,21 @@
 package potterproject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Rest {
-    public Rest(string url)
     
     private String team;
-    private String restRequest(string url, ArrayList<JSONPair> send) {
+    private int seed;
+    
+    private JSON restRequest(String url, JSONPair... pairs) {
+        JSON jsonObject = null;
         try {
             URL requestUrl = new URL(url);
             // Crea un oggetto HttpURLConnection
@@ -18,7 +29,11 @@ public class Rest {
 
             // Invia i dati
             connection.setDoOutput(true);
-            connection.getOutputStream().write(new JSON(send).toString().getBytes());
+            ArrayList<JSONPair> pairsArrayList = new ArrayList<>(Arrays.asList(pairs));
+            pairsArrayList.add(new JSONPair("team", team));
+            pairsArrayList.add(new JSONPair("seed", seed));
+            
+            connection.getOutputStream().write(new JSON(pairsArrayList).toString().getBytes());
             
             // Leggi la risposta del server
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -30,7 +45,7 @@ public class Rest {
         } catch (IOException e) {
         }
         if (jsonObject == null)
-            throw new RequestException("I'm sorry, something went terribly wrong...");
+            throw new RuntimeException("I'm sorry, something went terribly wrong...");
         
         return jsonObject;
 
@@ -38,46 +53,52 @@ public class Rest {
 
     public InitResult init() {
         String url = "https://dw.gnet.it/init";
-        InitResult initResult=new InitResult(restRequest(url, new ArrayList<JSONPair>(
-            new JSONPair("seed", seed),
-            new JSONPair("team", team)
-        )));
+        InitResult initResult=new InitResult(
+            restRequest(
+                url
+            )
+        );
         return initResult;
     }
 
     public LookResult look() {
         String url = "https://dw.gnet.it/look";
-        LookResult lookResult= new LookResult (restRequest(url, new ArrayList<JSONPair>(
-            new JSONPair("team", team),
-            new JSONPair("seed", seed)
-        )));
+        LookResult lookResult= new LookResult (
+            restRequest(
+                url
+            )
+        );
         return lookResult;
     }
 
     public MoveResult Move(int move) {
-        string url = "https://dw.gnet.it/move";
-        MoveResult moveResult = new MoveResult(restRequest(url, new ArrayList<JSONPair>(
-            new JSONPair("team", team),
-            new JSONPair("seed", seed),
-            new JSONPair("move", move)
-            )));
+        String url = "https://dw.gnet.it/move";
+        MoveResult moveResult = new MoveResult(
+            restRequest(
+                url,
+                new JSONPair("move", move)
+            )
+        );
         return moveResult;
     }
 
     public UnloadResult unload() {
         String url = "https://dw.gnet.it/unload";
-        UnloadResult unloadResult = new UnloadResult(restRequest(url, new ArrayList<JSONPair>(
-            new JSONPair("team", team),
-            new JSONPair("seed", seed)
-        )));
+        UnloadResult unloadResult = new UnloadResult(
+            restRequest(
+                url
+            )
+        );
         return unloadResult;
-        }
+    }
 
     public LoadResult load() {
         String url = "https://dw.gnet.it/load";
-        LoadResult loadResult = new LoadResult(restRequest(url, new ArrayList<JSONPair>(
-            new JSONPair("team", team),
-            new JSONPair("seed", seed)
-        )));
-        }
+        LoadResult loadResult = new LoadResult(
+            restRequest(
+                url
+            )
+        );
+        return loadResult;
+    }
 }

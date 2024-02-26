@@ -13,7 +13,7 @@ public class Maze {
     private int yPos;
 
     public boolean findCup() {
-        
+        return true;
     }
 
     public boolean home() {

@@ -1,14 +1,16 @@
 package potterproject;
 
+import java.util.ArrayList;
+
 public class LookResult {
 
-    private int[] neighbors;
+    private ArrayList<Integer> neighbors;
 
     private int posX;
 
     private int posY;
 
-    public int[] getNeighbors() {
+    public ArrayList<Integer> getNeighbors() {
         return neighbors;
     }
 
