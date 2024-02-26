@@ -4,9 +4,9 @@ public class JSONPair {
 
     private String param;
 
-    private Object value;
+    private String value;
 
-    public JSONPair(String param, Object value) {
+    public JSONPair(String param, String value) {
         this.param = param;
         this.value = value;
     }
@@ -15,7 +15,7 @@ public class JSONPair {
         return param;
     }
 
-    public Object getValue() {
+    public String getValue() {
         return value;
     }
 
