@@ -8,15 +8,16 @@ public class Tile {
 
     private int startDistance;
 
-    public boolean getChecked() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean isChecked() {
+        return checked;
     }
 
-    public boolean getWall() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean isWall() {
+        return wall;
     }
 
-    public int getStartDistace() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public int getStartDistance() {
+        return startDistance;
     }
+    
 }
