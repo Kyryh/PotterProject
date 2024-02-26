@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class JSON {
 
-    final String regex = "\"(.*?)\": (.*?)(,(?![^\\[]*])|\\})";
+    final String regex = "\"(.*?)\":(.*?)(,(?![^\\[]*])|\\})";
     
     final Pattern pattern = Pattern.compile(regex, Pattern.DOTALL);
     
