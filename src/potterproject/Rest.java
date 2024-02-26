@@ -12,14 +12,27 @@ import java.util.Arrays;
 public class Rest {
     
     private String team;
-    private int seed;
+    private String seed;
+
+    public Rest(String team, String seed) {
+        this.team = team;
+        this.seed = seed;
+    }
+
+    public Rest(String team) {
+        this.team = team;
+        this.seed = null;
+    }
+    
+    
     
     private JSON restRequest(String url, JSONPair... pairs) {
         JSON jsonObject = null;
+        HttpURLConnection connection = null;
         try {
             URL requestUrl = new URL(url);
             // Crea un oggetto HttpURLConnection
-            HttpURLConnection connection = (HttpURLConnection) requestUrl.openConnection();
+            connection = (HttpURLConnection) requestUrl.openConnection();
 
             // Imposta il metodo HTTP
             connection.setRequestMethod("POST");
@@ -31,18 +44,27 @@ public class Rest {
             connection.setDoOutput(true);
             ArrayList<JSONPair> pairsArrayList = new ArrayList<>(Arrays.asList(pairs));
             pairsArrayList.add(new JSONPair("team", team));
-            pairsArrayList.add(new JSONPair("seed", seed));
+            
+            if (seed != null)
+                pairsArrayList.add(new JSONPair("seed", seed));
             
             connection.getOutputStream().write(new JSON(pairsArrayList).toString().getBytes());
-            
             // Leggi la risposta del server
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String risposta = reader.readLine();
-
             // Analizza la risposta del server
             jsonObject = new JSON(risposta);
         } catch (MalformedURLException e) {
+            System.out.println(e);
         } catch (IOException e) {
+            System.out.println(e);
+            if (connection != null) {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+                try {
+                    throw new RuntimeException(reader.readLine());
+                    
+                } catch (IOException e2) {}
+            }
         }
         if (jsonObject == null)
             throw new RuntimeException("I'm sorry, something went terribly wrong...");
