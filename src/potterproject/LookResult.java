@@ -8,6 +8,22 @@ public class LookResult {
 
     private int posY;
 
-    public LookResult(JSON result) {
+    public int[] getNeighbors() {
+        return neighbors;
+    }
+
+    public int getPosX() {
+        return posX;
+    }
+
+    public int getPosY() {
+        return posY;
+    }
+
+    public LookResult(JSON json) {
+        neighbors = json.getIntArray("neighbors");
+        posX = json.getInt("posx");
+        posY = json.getInt("posy");
+
     }
 }

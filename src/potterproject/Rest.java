@@ -1,28 +1,83 @@
 package potterproject;
 
 public class Rest {
-
-    private String seed;
-
+    public Rest(string url)
+    
     private String team;
+    private String restRequest(string url, ArrayList<JSONPair> send) {
+        try {
+            URL requestUrl = new URL(url);
+            // Crea un oggetto HttpURLConnection
+            HttpURLConnection connection = (HttpURLConnection) requestUrl.openConnection();
+
+            // Imposta il metodo HTTP
+            connection.setRequestMethod("POST");
+
+            // Imposta il tipo di contenuto
+            connection.setRequestProperty("Content-Type", "application/json");
+
+            // Invia i dati
+            connection.setDoOutput(true);
+            connection.getOutputStream().write(new JSON(send).toString().getBytes());
+            
+            // Leggi la risposta del server
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String risposta = reader.readLine();
+
+            // Analizza la risposta del server
+            jsonObject = new JSON(risposta);
+        } catch (MalformedURLException e) {
+        } catch (IOException e) {
+        }
+        if (jsonObject == null)
+            throw new RequestException("I'm sorry, something went terribly wrong...");
+        
+        return jsonObject;
+
+    }
 
     public InitResult init() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        String url = "https://dw.gnet.it/init";
+        InitResult initResult=new InitResult(restRequest(url, new ArrayList<JSONPair>(
+            new JSONPair("seed", seed),
+            new JSONPair("team", team)
+        )));
+        return initResult;
     }
 
     public LookResult look() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        String url = "https://dw.gnet.it/look";
+        LookResult lookResult= new LookResult (restRequest(url, new ArrayList<JSONPair>(
+            new JSONPair("team", team),
+            new JSONPair("seed", seed)
+        )));
+        return lookResult;
     }
 
-    public int Move(int move) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public MoveResult Move(int move) {
+        string url = "https://dw.gnet.it/move";
+        MoveResult moveResult = new MoveResult(restRequest(url, new ArrayList<JSONPair>(
+            new JSONPair("team", team),
+            new JSONPair("seed", seed),
+            new JSONPair("move", move)
+            )));
+        return moveResult;
     }
 
     public UnloadResult unload() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+        String url = "https://dw.gnet.it/unload";
+        UnloadResult unloadResult = new UnloadResult(restRequest(url, new ArrayList<JSONPair>(
+            new JSONPair("team", team),
+            new JSONPair("seed", seed)
+        )));
+        return unloadResult;
+        }
 
     public LoadResult load() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+        String url = "https://dw.gnet.it/load";
+        LoadResult loadResult = new LoadResult(restRequest(url, new ArrayList<JSONPair>(
+            new JSONPair("team", team),
+            new JSONPair("seed", seed)
+        )));
+        }
 }

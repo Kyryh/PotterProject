@@ -13,7 +13,7 @@ public class Maze {
     private int yPos;
 
     public boolean findCup() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        
     }
 
     public boolean home() {

@@ -8,6 +8,21 @@ public class MoveResult {
 
     private int posY;
 
-    public MoveResult(JSON result) {
+    public int getEnergy() {
+        return energy;
+    }
+
+    public int getPosX() {
+        return posX;
+    }
+
+    public int getPosY() {
+        return posY;
+    }
+
+    public MoveResult(JSON json) {
+        energy = json.getInt("Energy");
+        posX = json.getInt("posx");
+        posY = json.getInt("posy");
     }
 }
