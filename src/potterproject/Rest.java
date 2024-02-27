@@ -57,13 +57,16 @@ public class Rest {
         } catch (MalformedURLException e) {
             System.out.println(e);
         } catch (IOException e) {
-            System.out.println(e);
             if (connection != null) {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
                 try {
                     throw new RequestException(reader.readLine());
                     
-                } catch (IOException e2) {}
+                } catch (IOException e2) {
+                    System.out.println(e2);
+                }
+            } else {
+                System.out.println(e);
             }
         }
         if (jsonObject == null)
