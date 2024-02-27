@@ -61,13 +61,13 @@ public class Rest {
             if (connection != null) {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
                 try {
-                    throw new RuntimeException(reader.readLine());
+                    throw new RequestException(reader.readLine());
                     
                 } catch (IOException e2) {}
             }
         }
         if (jsonObject == null)
-            throw new RuntimeException("I'm sorry, something went terribly wrong...");
+            throw new RequestException("Something went wrong");
         
         return jsonObject;
 

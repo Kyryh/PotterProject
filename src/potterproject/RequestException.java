@@ -1,6 +1,6 @@
 package potterproject;
 
-public class RequestException extends Exception {
+public class RequestException extends RuntimeException {
 
     public RequestException(String message) {
         super(message);
