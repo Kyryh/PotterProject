@@ -21,6 +21,8 @@ public class Frame extends javax.swing.JFrame {
      */
     public Frame() {
         initComponents();
+    }
+    public void createMaze(int[] data){
         for (int i = 0; i < 19; i++) {
             for (int j = 0; j < 19; j++) {
                 JLabel lblLabirinto = new JLabel();
@@ -68,7 +70,6 @@ public class Frame extends javax.swing.JFrame {
 
         jLabel1.setText("Energy:");
 
-        txtEnergy.setText("jTextField1");
         txtEnergy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEnergyActionPerformed(evt);
@@ -92,11 +93,7 @@ public class Frame extends javax.swing.JFrame {
 
         lblSeed.setText("Seed:");
 
-        txtSeed.setText("jTextField1");
-
         lblTeam.setText("Team");
-
-        txtTeam.setText("jTextField1");
 
         javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
         jPanel.setLayout(jPanelLayout);
@@ -105,6 +102,7 @@ public class Frame extends javax.swing.JFrame {
             .addGroup(jPanelLayout.createSequentialGroup()
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(btnStart)
                         .addGap(33, 33, 33)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -121,7 +119,7 @@ public class Frame extends javax.swing.JFrame {
                 .addComponent(lblTeam)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtTeam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 145, Short.MAX_VALUE))
+                .addGap(0, 152, Short.MAX_VALUE))
         );
         jPanelLayout.setVerticalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,6 +162,7 @@ public class Frame extends javax.swing.JFrame {
 
     private void txtEnergyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnergyActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtEnergyActionPerformed
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
@@ -172,6 +171,7 @@ public class Frame extends javax.swing.JFrame {
        txtSeed.setVisible(false);
        lblTeam.setVisible(false);
        txtTeam.setVisible(false);
+       
     }//GEN-LAST:event_btnStartActionPerformed
 
     /**

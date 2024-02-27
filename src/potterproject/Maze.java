@@ -3,6 +3,8 @@ package potterproject;
 
 import java.util.ArrayList;
 
+
+
 public class Maze {
 
     private Tile[][] matrix;
@@ -22,6 +24,7 @@ public class Maze {
     public Maze(String team) {
         this(team, null);
     }
+    
     
     public Maze(String team, String seed) {
         rest = new Rest(team, seed);
@@ -65,6 +68,34 @@ public class Maze {
         
     }
 
+    public Tile[][] getMatrix() {
+        return matrix;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getLenght() {
+        return lenght;
+    }
+
+    public int getxPos() {
+        return xPos;
+    }
+
+    public int getyPos() {
+        return yPos;
+    }
+
+    public int[] getHome() {
+        return home;
+    }
+
+    public Rest getRest() {
+        return rest;
+    }
+
     public boolean home() {
         return xPos == home[0] && yPos == home[1];
     }
@@ -93,7 +124,14 @@ public class Maze {
         
         return false;
     }
-
+    public int[] initialData(){
+        LookResult look=new LookResult(rest.look());
+        int data[]=new int[3];
+        data[1]=look.getEnergy();
+        data[2]=getHeight();
+        data[3]=getLenght();
+        return data;
+    }
     public void comeHome() {
     }
 }
