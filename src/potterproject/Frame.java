@@ -26,7 +26,7 @@ public class Frame extends javax.swing.JFrame {
                 JLabel lblLabirinto = new JLabel();
                 lblLabirinto.setBounds(i*cellSize, j*cellSize, cellSize-1, cellSize-1);
                 //if ((i+j)%2 == 0)
-                    lblLabirinto.setIcon(new ImageIcon(getClass().getResource("img/grigio.jpg")));
+                    lblLabirinto.setIcon(new ImageIcon(getClass().getResource("/img/grigio.jpg")));
                 //else
                 //    lblLabirinto.setIcon(new ImageIcon(getClass().getResource("img/nero.jpg")));
                 pnlLabirinto.add(lblLabirinto);
@@ -105,7 +105,6 @@ public class Frame extends javax.swing.JFrame {
             .addGroup(jPanelLayout.createSequentialGroup()
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(btnStart)
                         .addGap(33, 33, 33)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -168,7 +167,11 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEnergyActionPerformed
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
-       Maze maze=new Maze("abcbabxbxcb ");  // TODO add your handling code here:
+       Maze maze=new Maze(txtTeam.getText(),txtSeed.getText());
+       lblSeed.setVisible(false);
+       txtSeed.setVisible(false);
+       lblTeam.setVisible(false);
+       txtTeam.setVisible(false);
     }//GEN-LAST:event_btnStartActionPerformed
 
     /**
