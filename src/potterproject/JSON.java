@@ -38,7 +38,8 @@ public class JSON {
     }
     
     public String getString(String param) {
-        return getValue(param).substring(1, param.length()-1);
+        String value = getValue(param);
+        return value.substring(1, value.length()-1);
     }
     
     public int getInt(String param) {
