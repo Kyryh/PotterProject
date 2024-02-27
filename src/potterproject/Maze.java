@@ -36,26 +36,26 @@ public class Maze {
         LookNear look= new LookNear(rest.look());
         ArrayList<Int> neighbors = look.getNeighbors();
         //up
-        if (look.getPosY()>0){
-            matrix[look.getPosX()][look.getPosY()-1].setCheck(true);
-            matrix[look.getPosX()][look.getPosY()-1].setType(neighbors[0]);
+        if (neighbors.get(0) != -1){
+            matrix[look.getPosX()][look.getPosY()-1].setChecked(true);
+            matrix[look.getPosX()][look.getPosY()-1].setType(neighbors.get(0));
         }
         //right
-        if (look.getPosX()<lenght-1){
-            matrix[look.getPosX()+1][look.getPosY()].setCheck(true);
-            matrix[look.getPosX()+1][look.getPosY()].setType(neighbors[2]);
+        if (neighbors.get(1) != -1){
+            matrix[look.getPosX()+1][look.getPosY()].setChecked(true);
+            matrix[look.getPosX()+1][look.getPosY()].setType(neighbors.get(1));
         }
         //down
-        if (look.getPosY()<height-1){
-            matrix[look.getPosX()][look.getPosY()+1].setCheck(true);
-            matrix[look.getPosX()][look.getPosY()+1].setType(neighbors[4]);
+        if (neighbors.get(2) != -1){
+            matrix[look.getPosX()][look.getPosY()+1].setChecked(true);
+            matrix[look.getPosX()][look.getPosY()+1].setType(neighbors.get(2));
         }
         //left
-        if (look.getPosX()>0){
-            matrix[look.getPosX()-1][look.getPosY()].setCheck(true);
-            matrix[look.getPosX()-1][look.getPosY()].setType(neighbors[6]);
+        if (neighbors.get(3) != -1){
+            matrix[look.getPosX()-1][look.getPosY()].setChecked(true);
+            matrix[look.getPosX()-1][look.getPosY()].setType(neighbors.get(3));
         }
-
+        
     }
 
     public boolean home() {
