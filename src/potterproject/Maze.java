@@ -19,8 +19,12 @@ public class Maze {
 
     private Rest rest;
 
-    public Maze(int seed, String team) {
-        Rest rest = new Rest(team, Integer.toString(seed));
+    public Maze(String team) {
+        this(team, null);
+    }
+    
+    public Maze(String team, String seed) {
+        rest = new Rest(team, seed);
         InitResult initResult = new InitResult(rest.init());
         this.height = initResult.getHeight();
         this.lenght = initResult.getWidth();
@@ -28,7 +32,6 @@ public class Maze {
         this.yPos = initResult.getPosY();
         home = new int[]{xPos, yPos};
         matrix = new Tile[height][lenght];
-        
     }
     public boolean findCup() {
         return true;
