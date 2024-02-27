@@ -127,9 +127,9 @@ public class Maze {
     public int[] initialData(){
         LookResult look=new LookResult(rest.look());
         int data[]=new int[3];
-        data[1]=look.getEnergy();
-        data[2]=getHeight();
-        data[3]=getLenght();
+        data[0]=look.getEnergy();
+        data[1]=getHeight();
+        data[2]=getLenght();
         return data;
     }
     public void comeHome() {

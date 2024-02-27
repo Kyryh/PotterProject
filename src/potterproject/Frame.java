@@ -15,7 +15,6 @@ import javax.swing.JLabel;
  */
 public class Frame extends javax.swing.JFrame {
 
-    int cellSize = 25;
     /**
      * Creates new form Fame
      */
@@ -23,8 +22,9 @@ public class Frame extends javax.swing.JFrame {
         initComponents();
     }
     public void createMaze(int[] data){
-        for (int i = 0; i < 19; i++) {
-            for (int j = 0; j < 19; j++) {
+        int cellSize = 500/Math.max(data[1], data[2]);
+        for (int i = 0; i < data[1]; i++) {
+            for (int j = 0; j < data[2]; j++) {
                 JLabel lblLabirinto = new JLabel();
                 lblLabirinto.setBounds(i*cellSize, j*cellSize, cellSize-1, cellSize-1);
                 //if ((i+j)%2 == 0)
@@ -32,9 +32,11 @@ public class Frame extends javax.swing.JFrame {
                 //else
                 //    lblLabirinto.setIcon(new ImageIcon(getClass().getResource("img/nero.jpg")));
                 pnlLabirinto.add(lblLabirinto);
-                        
             }
         }
+        txtEnergy.setText(""+data[0]);
+        pnlLabirinto.revalidate();
+        pnlLabirinto.repaint();
         
     }
    
@@ -70,6 +72,7 @@ public class Frame extends javax.swing.JFrame {
 
         jLabel1.setText("Energy:");
 
+        txtEnergy.setPreferredSize(new java.awt.Dimension(65, 22));
         txtEnergy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEnergyActionPerformed(evt);
@@ -78,31 +81,36 @@ public class Frame extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/batteria100.png"))); // NOI18N
 
-        pnlLabirinto.setPreferredSize(new java.awt.Dimension(475, 475));
+        pnlLabirinto.setPreferredSize(new java.awt.Dimension(500, 500));
 
         javax.swing.GroupLayout pnlLabirintoLayout = new javax.swing.GroupLayout(pnlLabirinto);
         pnlLabirinto.setLayout(pnlLabirintoLayout);
         pnlLabirintoLayout.setHorizontalGroup(
             pnlLabirintoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 475, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
         pnlLabirintoLayout.setVerticalGroup(
             pnlLabirintoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 475, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
 
         lblSeed.setText("Seed:");
 
+        txtSeed.setPreferredSize(new java.awt.Dimension(65, 22));
+
         lblTeam.setText("Team");
+
+        txtTeam.setPreferredSize(new java.awt.Dimension(65, 22));
 
         javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
         jPanel.setLayout(jPanelLayout);
         jPanelLayout.setHorizontalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pnlLabirinto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(btnStart)
                         .addGap(33, 33, 33)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -113,13 +121,12 @@ public class Frame extends javax.swing.JFrame {
                         .addGap(45, 45, 45)
                         .addComponent(lblSeed)
                         .addGap(31, 31, 31)
-                        .addComponent(txtSeed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(pnlLabirinto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addComponent(lblTeam)
+                        .addComponent(txtSeed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(lblTeam)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtTeam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 152, Short.MAX_VALUE))
+                .addGap(0, 151, Short.MAX_VALUE))
         );
         jPanelLayout.setVerticalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,7 +148,7 @@ public class Frame extends javax.swing.JFrame {
                             .addComponent(txtTeam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addComponent(pnlLabirinto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 21, Short.MAX_VALUE))
+                .addGap(0, 15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -167,6 +174,7 @@ public class Frame extends javax.swing.JFrame {
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
        Maze maze=new Maze(txtTeam.getText(),txtSeed.getText());
+       createMaze(maze.initialData());
        lblSeed.setVisible(false);
        txtSeed.setVisible(false);
        lblTeam.setVisible(false);
