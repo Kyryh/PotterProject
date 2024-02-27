@@ -6,6 +6,16 @@ public class LoadResult {
 
     private int energy;
 
-    public LoadResult(JSON result) {
+    public String getInventory() {
+        return inventory;
+    }
+
+    public int getEnergy() {
+        return energy;
+    }
+
+    public LoadResult(JSON json) {
+        inventory = json.getString("inventory");
+        energy = json.getInt("Energy");
     }
 }
