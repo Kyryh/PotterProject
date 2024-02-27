@@ -1,5 +1,8 @@
 package potterproject;
 // copilot helpd.
+
+import java.util.ArrayList;
+
 public class Maze {
 
     private Tile[][] matrix;
@@ -33,8 +36,9 @@ public class Maze {
     }
     
     public void lookNear(){
-        LookNear look= new LookNear(rest.look());
-        ArrayList<Int> neighbors = look.getNeighbors();
+        
+        LookResult look= rest.look();
+        ArrayList<Integer> neighbors = look.getNeighbors();
         //up
         if (neighbors.get(0) != -1){
             matrix[look.getPosX()][look.getPosY()-1].setChecked(true);
@@ -59,44 +63,29 @@ public class Maze {
     }
 
     public boolean home() {
-        if (xPos == home[0] && yPos == home[1]) {
-            return true;
-        }
-        return false;
+        return xPos == home[0] && yPos == home[1];
     }
 
     public boolean move (int dir) {
         // 0 = up, 2 = right, 4 = down, 6 = left
         //up
         if (dir == 0) {
-            if (yPos > 0 && !matrix[xPos][yPos - 1].isWall()) {
-                yPos--;
-                return true;
-            }
+            // TODO
         }
 
         //right
         if (dir == 2) {
-            if (xPos < lenght - 1 && !matrix[xPos + 1][yPos].isWall()) {
-                xPos++;
-                return true;
-            }
+            // TODO
         }
 
         //down
         if (dir == 4) {
-            if (yPos < height - 1 && !matrix[xPos][yPos + 1].isWall()) {
-                yPos++;
-                return true;
-            }
+            // TODO
         }
         
         //left
         if (dir == 6) {
-            if (xPos > 0 && !matrix[xPos - 1][yPos].isWall()) {
-                xPos--;
-                return true;
-            }
+            // TODO
         }
         
         return false;
