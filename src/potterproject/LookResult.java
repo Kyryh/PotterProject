@@ -34,4 +34,11 @@ public class LookResult {
     public int getPosY() {
         return posY;
     }
+
+    @Override
+    public String toString() {
+        return "LookResult{" + "neighbors=" + neighbors + ", posX=" + posX + ", posY=" + posY + '}';
+    }
+    
+    
 }
