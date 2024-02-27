@@ -25,4 +25,11 @@ public class MoveResult {
         posX = json.getInt("posx");
         posY = json.getInt("posy");
     }
+
+    @Override
+    public String toString() {
+        return "MoveResult{" + "energy=" + energy + ", posX=" + posX + ", posY=" + posY + '}';
+    }
+    
+    
 }

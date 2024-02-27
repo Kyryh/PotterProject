@@ -75,14 +75,12 @@ public class Rest {
 
     public InitResult init() {
         String url = "https://dw.gnet.it/init";
-        System.out.println(restRequest(
-                url
-            ));
         InitResult initResult=new InitResult(
             restRequest(
                 url
             )
         );
+        this.seed = initResult.getSeed();
         return initResult;
     }
 
